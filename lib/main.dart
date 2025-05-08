@@ -4,6 +4,11 @@ import 'pantallas/login_screen.dart';
 import 'pantallas/menu_screen.dart';
 import 'pantallas/gestion_usuarios_screen.dart';
 import 'pantallas/crear_usuario_screen.dart';
+// Pantallas nuevas del módulo de productos
+import 'pantallas/inventory_screen.dart';
+import 'pantallas/agregar_producto_screen.dart';
+import 'pantallas/gestionar_producto_screen.dart';
+import 'pantallas/eliminar_producto_screen.dart';
 
 void main() {
   runApp(const ResyApp());
@@ -24,6 +29,11 @@ class ResyApp extends StatelessWidget {
         '/menu': (context) => const MenuScreen(),
         '/gestion': (context) => const GestionUsuariosScreen(),
         '/crear': (context) => const CrearUsuarioScreen(),
+        // Rutas nuevas del inventario
+        '/inventario': (context) => const InventoryScreen(),
+        '/agregar': (context) => const AgregarProductoScreen(),
+        '/gestionar': (context) => const GestionarProductoScreen(),
+        '/eliminar': (context) => const EliminarProductoScreen(),
       },
     );
   }
