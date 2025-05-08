@@ -11,23 +11,29 @@ class RegistroScreen extends StatefulWidget {
 
 class _RegistroScreenState extends State<RegistroScreen> {
   final _nombreController = TextEditingController();
+  final _apellidoController = TextEditingController();
+  final _cedulaController = TextEditingController();
   final _usuarioController = TextEditingController();
-  final _rolController = TextEditingController();
+  String? _rolController;
   final _contrasenaController = TextEditingController();
 
   @override
   void dispose() {
     _nombreController.dispose();
+    _apellidoController.dispose();
+    _cedulaController.dispose();
     _usuarioController.dispose();
-    _rolController.dispose();
+
     _contrasenaController.dispose();
     super.dispose();
   }
 
   void _registrarUsuario() async {
     final nombre = _nombreController.text;
+    final apellido = _nombreController.text;
+    final cedula = _nombreController.text;
     final usuario = _usuarioController.text;
-    final rol = _rolController.text;
+    final rol = _rolController;
     final contrasena = _contrasenaController.text;
 
     // ENDPOINT
@@ -36,8 +42,8 @@ class _RegistroScreenState extends State<RegistroScreen> {
     //DICCIONARIO CREAR UN USUARIO
     final Map<String, dynamic> usuarioRest = {
       'nombre': nombre,
-      'apellido': 'juanito',
-      'cedula': "9876543",
+      'apellido': apellido,
+      'cedula': cedula,
       'nombreUsuario': "MESERO",
       'contrasena': contrasena,
       'rol': rol,
@@ -88,13 +94,34 @@ class _RegistroScreenState extends State<RegistroScreen> {
               decoration: const InputDecoration(labelText: 'Nombre'),
             ),
             TextField(
+              controller: _apellidoController,
+              decoration: const InputDecoration(labelText: 'apellido'),
+            ),
+            TextField(
+              controller: _cedulaController,
+              decoration: const InputDecoration(labelText: 'Cedula'),
+            ),
+            TextField(
               controller: _usuarioController,
               decoration: const InputDecoration(labelText: 'Usuario'),
             ),
-            TextField(
-              controller: _rolController,
+            DropdownButtonFormField<String>(
+              value: _rolController,
+              items:
+                  ['MESERO', 'ADMIN'].map((String rol) {
+                    return DropdownMenuItem<String>(
+                      value: rol,
+                      child: Text(rol),
+                    );
+                  }).toList(),
+              onChanged: (String? nuevoValor) {
+                setState(() {
+                  _rolController = nuevoValor;
+                });
+              },
               decoration: const InputDecoration(labelText: 'Rol'),
             ),
+
             TextField(
               controller: _contrasenaController,
               decoration: const InputDecoration(labelText: 'Contraseña'),
