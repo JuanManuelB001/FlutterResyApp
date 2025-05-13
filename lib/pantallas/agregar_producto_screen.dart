@@ -31,7 +31,9 @@ class _AgregarProductoScreenState extends State<AgregarProductoScreen> {
     esAlimenticio = _esAlimenticio == 'Sí' ? true : false;
     print('parecedero = $esAlimenticio');
     //ENDPOINT
-    final urlEndPoint = Uri.parse('http://localhost:8863/ingredientes/');
+    final urlEndPoint = Uri.parse(
+      'https://resyapp-m4ap.onrender.com/ingredientes/',
+    );
     //DICCIONARIO
     Map<String, dynamic> productos = {
       "nombre": nombre,

@@ -25,7 +25,7 @@ class _GestionarProductoScreenState extends State<GestionarProductoScreen> {
   Future<void> fetchProductos() async {
     try {
       final urlEndPoint = await http.get(
-        Uri.parse("http://localhost:8863/ingredientes/"),
+        Uri.parse("https://resyapp-m4ap.onrender.com/ingredientes/"),
       );
       // VALIDAR RESPUESTA DE SERVIDOR
       if (urlEndPoint.statusCode == 200) {

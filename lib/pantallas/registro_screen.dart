@@ -38,7 +38,7 @@ class _RegistroScreenState extends State<RegistroScreen> {
 
     // ENDPOINT
     //http://localhost:8863/rest/
-    final urlEndPoint = Uri.parse('http://127.0.0.1:8863/rest/');
+    final urlEndPoint = Uri.parse('https://resyapp-m4ap.onrender.com/rest/');
     //DICCIONARIO CREAR UN USUARIO
     final Map<String, dynamic> usuarioRest = {
       'nombre': nombre,
