@@ -23,7 +23,7 @@ class _EliminarProductoState extends State<EliminarProductoScreen> {
   Future<void> fetchProducto() async {
     try {
       final urlEndPoint = await http.get(
-        Uri.parse("http://localhost:8863/ingredientes/"),
+        Uri.parse("https://resyapp-m4ap.onrender.com/ingredientes/"),
       );
       if (urlEndPoint.statusCode == 200) {
         setState(() {
@@ -44,7 +44,9 @@ class _EliminarProductoState extends State<EliminarProductoScreen> {
   Future<void> eliminarProducto(String id) async {
     try {
       final response = await http.delete(
-        Uri.parse("http://localhost:8863/ingredientes/eliminar/$id"),
+        Uri.parse(
+          "https://resyapp-m4ap.onrender.com/ingredientes/eliminar/$id",
+        ),
       );
       if (response.statusCode == 200 || response.statusCode == 204) {
         await fetchProducto(); // Recarga desde el servidor
