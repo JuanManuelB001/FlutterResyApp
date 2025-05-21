@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pantallas/agregar_menu_screen.dart';
+import 'package:frontend/pantallas/consultar_menu_screen.dart';
+import 'package:frontend/pantallas/eliminar_menu_screen.dart';
+import 'package:frontend/pantallas/gestion_menu_screen.dart';
+import 'package:frontend/pantallas/modificar_menu_screen.dart';
 import 'pantallas/registro_screen.dart';
 import 'pantallas/login_screen.dart';
 import 'pantallas/menu_screen.dart';
@@ -34,6 +39,13 @@ class ResyApp extends StatelessWidget {
         '/agregar': (context) => const AgregarProductoScreen(),
         '/gestionar': (context) => const GestionarProductoScreen(),
         '/eliminar': (context) => const EliminarProductoScreen(),
+
+        // Pantallas del módulo de menú
+        '/gestion_menu': (context) => const GestionMenuScreen(),
+        '/agregar_menu': (context) => const AgregarMenuScreen(),
+        '/consultar_menu': (context) => const ConsultarMenuScreen(),
+        '/modificar_menu': (context) => const ModificarMenuScreen(),
+        '/eliminar_menu': (context) => const EliminarMenuScreen(),
       },
     );
   }
