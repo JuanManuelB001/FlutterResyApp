@@ -30,6 +30,12 @@ class MenuScreen extends StatelessWidget {
               },
             ),
             ListTile(
+              title: const Text("Menú"),
+              onTap: () {
+                Navigator.pushNamed(context, "/gestion_menu");
+              },
+            ),
+            ListTile(
               title: const Text('Gestión de usuarios'),
               onTap: () {
                 Navigator.pushNamed(context, '/gestion');
