@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/pantallas/agregar_menu_screen.dart';
+import 'package:frontend/pantallas/consultar_menu_mesero_screen.dart';
 import 'package:frontend/pantallas/consultar_menu_screen.dart';
 import 'package:frontend/pantallas/eliminar_menu_screen.dart';
 import 'package:frontend/pantallas/gestion_menu_screen.dart';
 import 'package:frontend/pantallas/modificar_menu_screen.dart';
+import 'package:frontend/pantallas/modificar_usuario.dart';
 import 'pantallas/registro_screen.dart';
 import 'pantallas/login_screen.dart';
 import 'pantallas/menu_screen.dart';
@@ -34,6 +36,7 @@ class ResyApp extends StatelessWidget {
         '/menu': (context) => const MenuScreen(),
         '/gestion': (context) => const GestionUsuariosScreen(),
         '/crear': (context) => const CrearUsuarioScreen(),
+        '/modificar': (context) => const ModificarUsuarioScreen(),
         // Rutas nuevas del inventario
         '/inventario': (context) => const InventoryScreen(),
         '/agregar': (context) => const AgregarProductoScreen(),
@@ -46,6 +49,9 @@ class ResyApp extends StatelessWidget {
         '/consultar_menu': (context) => const ConsultarMenuScreen(),
         '/modificar_menu': (context) => const ModificarMenuScreen(),
         '/eliminar_menu': (context) => const EliminarMenuScreen(),
+
+        // MESERO
+        '/consultarMenu': (context) => const ConsultarMenuMeseroScreen(),
       },
     );
   }

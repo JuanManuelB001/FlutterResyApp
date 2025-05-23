@@ -16,7 +16,7 @@ class GestionUsuariosScreen extends StatelessWidget {
               child: const Text('Crear nuevo usuario'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, '/modificar'),
               child: const Text('Modificar usuario'),
             ),
             ElevatedButton(
