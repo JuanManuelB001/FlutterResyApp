@@ -5,13 +5,13 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
-class ConsultarMenuScreen extends StatefulWidget {
-  const ConsultarMenuScreen({Key? key}) : super(key: key);
+class ConsultarMenuMeseroScreen extends StatefulWidget {
+  const ConsultarMenuMeseroScreen({Key? key}) : super(key: key);
 
-  State<ConsultarMenuScreen> createState() => _ConsultarMenuState();
+  State<ConsultarMenuMeseroScreen> createState() => _ConsultarMenuState();
 }
 
-class _ConsultarMenuState extends State<ConsultarMenuScreen> {
+class _ConsultarMenuState extends State<ConsultarMenuMeseroScreen> {
   List<dynamic> menu = [];
   bool estaCargando = true;
 

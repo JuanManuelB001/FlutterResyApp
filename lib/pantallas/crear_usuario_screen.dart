@@ -46,7 +46,7 @@ class _CrearUsuarioScreenState extends State<CrearUsuarioScreen> {
       'nombre': nombre,
       'apellido': apellido,
       'cedula': cedula,
-      'nombreUsuario': "MESERO",
+      'nombreUsuario': rol,
       'contrasena': contrasena,
       'rol': rol,
     };

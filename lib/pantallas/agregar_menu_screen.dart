@@ -1,6 +1,9 @@
+import 'dart:io';
 import 'dart:convert';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:file_picker/file_picker.dart';
 
 class AgregarMenuScreen extends StatefulWidget {
   const AgregarMenuScreen({Key? key}) : super(key: key);
@@ -14,6 +17,7 @@ class Ingrediente {
   final String nombre;
 
   Ingrediente({required this.id, required this.nombre});
+
   factory Ingrediente.fromJson(Map<String, dynamic> json) {
     return Ingrediente(id: json['id'], nombre: json['nombre']);
   }
@@ -22,8 +26,10 @@ class Ingrediente {
 class _AgregarMenuState extends State<AgregarMenuScreen> {
   final _nombreController = TextEditingController();
   final _descripcionController = TextEditingController();
-  final _imagenController = TextEditingController();
   final _precioController = TextEditingController();
+
+  Uint8List? _imagenBytes;
+  String? _nombreArchivo;
 
   List<Ingrediente> _ingredientesDisponibles = [];
   List<int> _ingredientesSeleccionados = [];
@@ -52,24 +58,44 @@ class _AgregarMenuState extends State<AgregarMenuScreen> {
     }
   }
 
+  Future<void> _seleccionarImagenWeb() async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+      withData: true,
+    );
+
+    if (result != null && result.files.single.bytes != null) {
+      setState(() {
+        _imagenBytes = result.files.single.bytes;
+        _nombreArchivo = result.files.single.name;
+        print('ARchivo selecionado $_nombreArchivo');
+      });
+    }
+  }
+
   Future<void> _agregarProductoMenu() async {
     final nombre = _nombreController.text;
     final descripcion = _descripcionController.text;
     final precio = double.tryParse(_precioController.text);
-    final imagen = _imagenController.text;
 
-    if (nombre.isEmpty || descripcion.isEmpty || precio == null) {
+    if (nombre.isEmpty ||
+        descripcion.isEmpty ||
+        precio == null ||
+        _imagenBytes == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Por favor completa todos los campos')),
       );
       return;
     }
 
+    // En este punto, puedes convertir la imagen a base64 si deseas enviarla como texto:
+    //final imagenBase64 = base64Encode(_imagenBytes!);
+
     final producto = {
       "nombre": nombre,
       "descripcion": descripcion,
       "precio": precio,
-      "imagen": imagen,
+      "imagen": _nombreArchivo,
       "ingredientesIds": _ingredientesSeleccionados,
     };
 
@@ -86,7 +112,6 @@ class _AgregarMenuState extends State<AgregarMenuScreen> {
           const SnackBar(content: Text('Producto agregado exitosamente')),
         );
       } else {
-        print('Error: ${response.statusCode}');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Error al agregar: ${response.statusCode}')),
         );
@@ -122,10 +147,17 @@ class _AgregarMenuState extends State<AgregarMenuScreen> {
               decoration: const InputDecoration(labelText: 'Precio'),
               keyboardType: TextInputType.number,
             ),
-            TextField(
-              controller: _imagenController,
-              decoration: const InputDecoration(labelText: 'Imagen'),
+            const SizedBox(height: 10),
+            ElevatedButton.icon(
+              onPressed: _seleccionarImagenWeb,
+              icon: const Icon(Icons.image),
+              label: const Text('Seleccionar Imagen'),
             ),
+            if (_imagenBytes != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Image.memory(_imagenBytes!, height: 150),
+              ),
             const SizedBox(height: 20),
             const Text(
               'Selecciona Ingredientes:',
