@@ -51,7 +51,7 @@ class ResyApp extends StatelessWidget {
         '/eliminar_menu': (context) => const EliminarMenuScreen(),
 
         // MESERO
-        '/consultarMenu': (context) => const ConsultarMenuMeseroScreen(),
+        '/mesero_menu': (context) => const ConsultarMenuMeseroScreen(),
       },
     );
   }
