@@ -60,7 +60,7 @@ class _EliminarMenuState extends State<EliminarMenuScreen> {
     } catch (e) {
       print("Error al eliminar: $e");
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Error al eliminar el producto')),
+        const SnackBar(content: Text('Error al eliminar el producto ')),
       );
     }
   }
@@ -84,7 +84,9 @@ class _EliminarMenuState extends State<EliminarMenuScreen> {
                     trailing: IconButton(
                       icon: const Icon(Icons.delete, color: Colors.red),
                       onPressed: () {
-                        eliminarProductoDelMenu(producto['id'].toString());
+                        eliminarProductoDelMenu(
+                          producto['producto_id'].toString(),
+                        );
                       },
                     ),
                   );
