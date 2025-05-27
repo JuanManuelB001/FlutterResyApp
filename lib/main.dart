@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/pantallas/agregar_menu_screen.dart';
 import 'package:frontend/pantallas/consultar_menu_mesero_screen.dart';
 import 'package:frontend/pantallas/consultar_menu_screen.dart';
+import 'package:frontend/pantallas/consultar_pedido.dart';
 import 'package:frontend/pantallas/eliminar_menu_screen.dart';
 import 'package:frontend/pantallas/gestion_menu_screen.dart';
 import 'package:frontend/pantallas/modificar_menu_screen.dart';
@@ -49,9 +50,10 @@ class ResyApp extends StatelessWidget {
         '/consultar_menu': (context) => const ConsultarMenuScreen(),
         '/modificar_menu': (context) => const ModificarMenuScreen(),
         '/eliminar_menu': (context) => const EliminarMenuScreen(),
-
         // MESERO
         '/mesero_menu': (context) => const ConsultarMenuMeseroScreen(),
+        //PEDIDOS
+        '/pedidos': (context) => const ConsultarPedidoScreen(),
       },
     );
   }
